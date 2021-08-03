@@ -8,6 +8,7 @@ import MainStory from '../MainStory'
 import SecondaryStory from '../SecondaryStory'
 import OpinionStory from '../OpinionStory'
 import Advertisement from '../Advertisement'
+import { QUERIES } from '../../constants'
 
 const MainStoryGrid = () => {
   return (
@@ -26,11 +27,11 @@ const MainStoryGrid = () => {
 
       <OpinionSection>
         <SectionTitle>Opinion</SectionTitle>
-        <StoryList>
+        <OpinionStoryList>
           {OPINION_STORIES.map((story, index) => (
             <OpinionStory key={story.id} {...story} />
           ))}
-        </StoryList>
+        </OpinionStoryList>
       </OpinionSection>
 
       <AdvertisementSection>
@@ -47,8 +48,16 @@ const Wrapper = styled.div`
     'secondary-stories'
     'opinion-stories'
     'advertisement';
-  gap: 48px;
+  gap: 48px 16px;
   margin-bottom: 48px;
+
+  @media ${QUERIES.tabletAndUp} {
+    grid-template-areas:
+      'main-story main-story secondary-stories'
+      'advertisement advertisement advertisement'
+      'opinion-stories opinion-stories opinion-stories';
+    grid-template-columns: repeat(3, 1fr);
+  }
 `
 
 const MainStorySection = styled.section`
@@ -57,10 +66,16 @@ const MainStorySection = styled.section`
 
 const SecondaryStorySection = styled.section`
   grid-area: secondary-stories;
+
+  @media ${QUERIES.tabletAndUp} {
+    padding-left: 16px;
+    border-left: 1px solid var(--color-gray-300);
+  }
 `
 
 const StoryList = styled.div`
   --gap: 16px;
+  --border: 1px solid var(--color-gray-300);
 
   display: flex;
   flex-direction: column;
@@ -68,7 +83,20 @@ const StoryList = styled.div`
   & > *:not(:first-child) {
     margin-top: var(--gap);
     padding-top: var(--gap);
-    border-top: 1px solid var(--color-gray-300);
+    border-top: var(--border);
+  }
+`
+
+const OpinionStoryList = styled(StoryList)`
+  @media ${QUERIES.tabletOnly} {
+    flex-direction: row;
+    gap: 32px;
+
+    & > * {
+      flex: 1;
+      --gap: 0;
+      --border: 0;
+    }
   }
 `
 
