@@ -90,6 +90,7 @@ const MainHeader = styled(MaxWidthWrapper)`
   }
 
   @media ${QUERIES.desktopAndUp} {
+    margin-bottom: 84px;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;

@@ -1,6 +1,6 @@
-import { createGlobalStyle } from 'styled-components/macro';
+import { createGlobalStyle } from 'styled-components/macro'
 
-import { COLORS, WEIGHTS, FAMILIES } from '../../constants';
+import { COLORS, WEIGHTS, FAMILIES } from '../../constants'
 
 const GlobalStyles = createGlobalStyle`
 /* http://meyerweb.com/eric/tools/css/reset/
@@ -67,6 +67,8 @@ html {
   --font-family-serif: ${FAMILIES.serif};
   --font-family-sans-serif: ${FAMILIES.sansSerif};
   --font-family-logo: ${FAMILIES.logo};
+
+  --border-divider: 1px solid var(--color-gray-300);
 }
 
 
@@ -133,6 +135,6 @@ a {
   color: inherit;
   text-decoration: none;
 }
-`;
+`
 
-export default GlobalStyles;
+export default GlobalStyles

@@ -42,6 +42,8 @@ const MainStoryGrid = () => {
 }
 
 const Wrapper = styled.div`
+  --spacing-gap: 16px;
+
   display: grid;
   grid-template-areas:
     'main-story'
@@ -58,32 +60,55 @@ const Wrapper = styled.div`
       'opinion-stories opinion-stories opinion-stories';
     grid-template-columns: repeat(3, 1fr);
   }
+
+  @media ${QUERIES.desktopAndUp} {
+    margin-bottom: 58px;
+    gap: 0;
+    grid-template-areas:
+      'main-story secondary-stories opinion-stories'
+      'main-story advertisement advertisement';
+    grid-template-columns: 477px 418px 1fr;
+  }
 `
 
 const MainStorySection = styled.section`
   grid-area: main-story;
+
+  @media ${QUERIES.desktopAndUp} {
+    padding-right: var(--spacing-gap);
+    margin-right: var(--spacing-gap);
+    border-right: var(--border-divider);
+  }
 `
 
 const SecondaryStorySection = styled.section`
   grid-area: secondary-stories;
 
   @media ${QUERIES.tabletAndUp} {
-    padding-left: 16px;
-    border-left: 1px solid var(--color-gray-300);
+    padding-left: var(--spacing-gap);
+    border-left: var(--border-divider);
+  }
+
+  @media ${QUERIES.desktopAndUp} {
+    border: 0;
+    padding: 0;
+
+    border-right: var(--border-divider);
+    padding-right: var(--spacing-gap);
+    margin-right: var(--spacing-gap);
   }
 `
 
 const StoryList = styled.div`
-  --gap: 16px;
-  --border: 1px solid var(--color-gray-300);
+  --item-gap: 16px;
 
   display: flex;
   flex-direction: column;
 
   & > *:not(:first-child) {
-    margin-top: var(--gap);
-    padding-top: var(--gap);
-    border-top: var(--border);
+    margin-top: var(--item-gap);
+    padding-top: var(--item-gap);
+    border-top: var(--border-divider);
   }
 `
 
@@ -94,8 +119,8 @@ const OpinionStoryList = styled(StoryList)`
 
     & > * {
       flex: 1;
-      --gap: 0;
-      --border: 0;
+      --item-gap: 0;
+      --border-divider: 0;
     }
   }
 `
@@ -106,6 +131,12 @@ const OpinionSection = styled.section`
 
 const AdvertisementSection = styled.section`
   grid-area: advertisement;
+
+  @media ${QUERIES.desktopAndUp} {
+    padding-top: var(--spacing-gap);
+    margin-top: var(--spacing-gap);
+    border-top: var(--border-divider);
+  }
 `
 
 export default MainStoryGrid
