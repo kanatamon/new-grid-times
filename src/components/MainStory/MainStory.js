@@ -44,7 +44,7 @@ const Abstract = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
 
-  @media ${QUERIES.tabletAndUp} {
+  @media ${QUERIES.tabletOnly} {
     -webkit-line-clamp: 16;
   }
 `
