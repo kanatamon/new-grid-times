@@ -37,7 +37,9 @@ const SpecialtyStoryGrid = () => {
         </SectionTitle>
         <SportsStories>
           {SPORTS_STORIES.map((data) => (
-            <MiniStory key={data.id} {...data} />
+            <SportsStoryWrapper key={data.id}>
+              <MiniStory {...data} />
+            </SportsStoryWrapper>
           ))}
         </SportsStories>
       </SportsSection>
@@ -49,14 +51,18 @@ const Wrapper = styled.div`
   display: grid;
   gap: 48px;
 
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.tabletAndUp} {
+    gap: 64px;
+  }
+
+  @media ${QUERIES.laptopAndUp} {
     gap: 0;
     grid-template-columns: repeat(2, 1fr);
   }
 `
 
 const MarketsSection = styled.section`
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     padding-right: 16px;
     border-right: var(--border-divider);
   }
@@ -64,30 +70,30 @@ const MarketsSection = styled.section`
 
 const MarketCards = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
   gap: 16px;
 `
 
 const SportsSection = styled.section`
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     padding-left: 16px;
   }
 `
 
 const SportsStories = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
   gap: 16px;
 
   @media ${QUERIES.tabletAndUp} {
     display: flex;
-    flex-wrap: nowrap;
     overflow: auto;
-
-    & > * {
-      flex: 0 0 220px;
-    }
+    grid-template-columns: revert;
   }
+`
+
+const SportsStoryWrapper = styled.div`
+  flex: 0 0 220px;
 `
 
 export default SpecialtyStoryGrid
