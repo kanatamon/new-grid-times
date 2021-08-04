@@ -86,14 +86,17 @@ const MainHeader = styled(MaxWidthWrapper)`
   margin-bottom: 48px;
 
   @media ${QUERIES.tabletAndUp} {
+    margin-top: 48px;
     margin-bottom: 72px;
   }
 
   @media ${QUERIES.desktopAndUp} {
-    margin-bottom: 84px;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
+
+    margin-top: 16px;
+    margin-bottom: 84px;
   }
 `
 
