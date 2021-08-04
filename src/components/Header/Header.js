@@ -29,23 +29,19 @@ const Header = () => {
         </Row>
       </SuperHeader>
       <MainHeader>
-        <DesktopHeaderLeft>
-          <ActionGroup>
-            <button>
-              <Search size={24} />
-            </button>
-            <button>
-              <Menu size={24} />
-            </button>
-          </ActionGroup>
-        </DesktopHeaderLeft>
+        <DesktopActionGroup>
+          <button>
+            <Search size={24} />
+          </button>
+          <button>
+            <Menu size={24} />
+          </button>
+        </DesktopActionGroup>
         <Logo />
-        <DesktopHeaderRight>
-          <CTAGroup>
-            <Button>Subscribe</Button>
-            <CTALink href="#">Already a subscriber?</CTALink>
-          </CTAGroup>
-        </DesktopHeaderRight>
+        <SubscribeWrapper>
+          <Button>Subscribe</Button>
+          <SubLink href="#">Already a subscriber?</SubLink>
+        </SubscribeWrapper>
       </MainHeader>
     </header>
   )
@@ -82,6 +78,7 @@ const ActionGroup = styled.div`
 const MainHeader = styled(MaxWidthWrapper)`
   display: flex;
   justify-content: center;
+
   margin-top: 32px;
   margin-bottom: 48px;
 
@@ -94,41 +91,45 @@ const MainHeader = styled(MaxWidthWrapper)`
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
+    justify-content: revert;
 
     margin-top: 16px;
     margin-bottom: 84px;
   }
 `
 
-const DesktopHeaderLeft = styled.div`
+const DesktopActionGroup = styled(ActionGroup)`
+  display: none;
+
+  @media ${QUERIES.desktopAndUp} {
+    display: flex;
+  }
+`
+
+const SubscribeWrapper = styled.div`
   display: none;
 
   @media ${QUERIES.desktopAndUp} {
     display: revert;
+    justify-self: end;
+    position: relative;
   }
 `
 
-const DesktopHeaderRight = styled.div`
-  display: none;
-
-  @media ${QUERIES.desktopAndUp} {
-    display: revert;
-    margin-top: auto;
-    margin-left: auto;
-  }
-`
-
-const CTAGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-`
-
-const CTALink = styled.a`
+const SubLink = styled.a`
   font-size: ${14 / 16}rem;
   font-style: italic;
   text-decoration: underline;
+
+  /*
+  [Great Technicue]: By disable this element from flow layout, which make
+  the Subscribe's button and the left ActionGroup to be aligned perfectly center
+  on horizon.
+  */
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  margin-top: 8px;
 `
 
 export default Header
