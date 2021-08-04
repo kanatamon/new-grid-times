@@ -52,7 +52,7 @@ const SuperHeader = styled.div`
   background: var(--color-gray-900);
   color: white;
 
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     display: none;
   }
 `
@@ -87,7 +87,7 @@ const MainHeader = styled(MaxWidthWrapper)`
     margin-bottom: 72px;
   }
 
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
@@ -101,7 +101,7 @@ const MainHeader = styled(MaxWidthWrapper)`
 const DesktopActionGroup = styled(ActionGroup)`
   display: none;
 
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     display: flex;
   }
 `
@@ -109,7 +109,7 @@ const DesktopActionGroup = styled(ActionGroup)`
 const SubscribeWrapper = styled.div`
   display: none;
 
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     display: revert;
     justify-self: end;
     position: relative;
