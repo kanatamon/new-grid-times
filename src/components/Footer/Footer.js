@@ -148,7 +148,7 @@ const TopRow = styled.div`
     justify-content: center;
   }
 
-  @media ${QUERIES.desktopAndUp} {
+  @media ${QUERIES.laptopAndUp} {
     justify-content: flex-end;
   }
 `
@@ -180,7 +180,9 @@ const MainNavArea = styled.div`
 
   @media ${QUERIES.tabletAndUp} {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+    flex-direction: revert;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-content: space-between;
     text-align: left;
   }
 `
@@ -209,6 +211,10 @@ const Subfooter = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media ${QUERIES.laptopAndUp} {
+    align-items: flex-start;
+  }
 `
 
 const Logo = styled.a`
